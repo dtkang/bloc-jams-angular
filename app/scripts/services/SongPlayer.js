@@ -1,7 +1,15 @@
 (function() {
     function SongPlayer() {
+        /**
+        * @desc Instance of SongPlayer object
+        * @type {Object}
+        */        
         var SongPlayer = {};
-        
+
+        /**
+        * @desc Current song
+        * @type {Object}
+        */        
         var currentSong = null;
         
         /**
@@ -28,17 +36,37 @@
             });
  
             currentSong = song;
-        };        
+        };
         
+        /**
+        * @function playSong
+        * @desc Plays the current Buzz object
+        * @param {Object} song
+        */        
+        var playSong = function(song) {
+            currentBuzzObject.play();
+            song.playing = true;
+        };
         
+
+        /**
+        * @function play
+        * @desc Loads up the next song and plays it
+        * @param {Object} song
+        */        
         SongPlayer.play = function(song) {
             
             if (currentSong !== song) {
                 setSong(song);
-                currentBuzzObject.play();
-                song.playing = true;
+                playSong(song);
             }
         };
+
+        /**
+        * @function pause
+        * @desc Pauses the current song
+        * @param {Object} song
+        */        
 
         SongPlayer.pause = function(song) {
             currentBuzzObject.pause();
